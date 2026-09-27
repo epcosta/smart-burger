@@ -17,7 +17,7 @@ function Cart({ setShowCart, showCart }: CartType) {
       if (cartItems.length === 0) {
         return;
       }
-      const response = await fetch("http://localhost:3000/criar-pedido", {
+      const response = await fetch("http://localhost:3000/create-order", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",

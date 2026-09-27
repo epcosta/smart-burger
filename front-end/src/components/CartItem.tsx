@@ -83,7 +83,11 @@ function CartItem({ id, name, price, qtd, img }: CartItemType) {
   return (
     <>
       <div className="flex">
-        <img src={`./${img}`} className="w-25 rounded-md" alt="" />
+        <img
+          src={`http://localhost:3000/uploads/${img}`}
+          className="w-25 rounded-md"
+          alt=""
+        />
 
         <div className="ms-2 w-full">
           <p className="text-sm font-bold uppercase">{name}</p>

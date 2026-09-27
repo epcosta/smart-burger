@@ -17,6 +17,7 @@ function Login() {
 
   async function handleSubmit(e: React.SubmitEvent<HTMLFormElement>) {
     e.preventDefault();
+    console.log("ANTES DO FETCH");
 
     try {
       if (!email || !password) {
@@ -33,6 +34,7 @@ function Login() {
         credentials: "include",
       });
 
+      console.log("DEPOIS DO FETCH");
       if (response.status === 404) {
         setError("Usuario não encontrado");
         return;
@@ -54,7 +56,7 @@ function Login() {
         navigate("/");
       }
     } catch (error) {
-      console.log(error);
+      console.error("ERRO NO FETCH:", error);
       return;
     }
   }
@@ -83,6 +85,7 @@ function Login() {
         <p className="text-sm font-bold text-red-500">{error}</p>
 
         <Button type="submit" variant="default" title="Login" />
+
         <Link to="/cadastro" className="w-full">
           <Button type="button" variant="outline" title="Não tenho uma conta" />
         </Link>

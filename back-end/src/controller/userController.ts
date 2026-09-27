@@ -4,18 +4,20 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
 export const login = async (req: Request, res: Response) => {
+  console.log("1 - ENTROU NO LOGIN");
   const { email, password } = req.body;
 
   if (!email || !password) {
     res.status(400).json({ message: "E-mail e senha são obrigatórios" });
     return;
   }
-
+  console.log("2 - email:", email);
   const user = await prisma.user.findFirst({
     where: {
       email,
     },
   });
+  console.log("3 - PRISMA RESPONDEU", user);
   if (!user) {
     res.status(404).json({ message: "Usuário NÃO encontrado" });
     return;
